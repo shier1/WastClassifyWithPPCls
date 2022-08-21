@@ -1,0 +1,36 @@
+Global:
+  infer_imgs: "./test"
+  inference_model_dir: "./models/mobilenetv2_cbam_1batch"
+  batch_size: 1
+  use_gpu: True
+  enable_mkldnn: False
+  cpu_num_threads: False
+  enable_benchmark: True
+  benchmark: True
+  use_fp16: False
+  ir_optim: True
+  use_tensorrt: False
+  gpu_mem: 5000
+  enable_profile: True
+
+PreProcess:
+  transform_ops:
+    - ResizeImage:
+        resize_short: 256
+    - CropImage:
+        size: 224
+    - NormalizeImage:
+        scale: 0.00392157
+        mean: [0.53870025, 0.58465116, 0.62831561]
+        std: [0.24331439, 0.23134713, 0.22307978]
+        order: ''
+        channel_num: 3
+    - ToCHWImage:
+
+PostProcess:
+  main_indicator: Topk
+  Topk:
+    topk: 1
+    class_id_map_file: "../ppcls/utils/label_list.txt"
+  SavePreLabel:
+    save_dir: ./pre_label/

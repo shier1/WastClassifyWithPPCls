@@ -1,0 +1,50 @@
+----------------------------------------------8-15日新增内容--------------------------------------------------------------
+1、添加了MobileNetv2_CBAM 对于wordtree的支持具体为：
+ppcls/configs/ImageNet/MobileNetV2_wordtree.json
+
+2、添加了celoss_wordtree.py具体为：
+ppcls/loss/celoss_wordtree.py
+ppcls/loss/__init__.py 中添加CELossWorldTree
+
+3、在dataset文件内部新增了wordtree需要的东西，具体为：
+dataset/word_tree.json
+dataset/word_tree_train.txt
+dataset/word_tree_val.txt
+
+4、添加基于wordtree所需的dataloader支持， 具体为：
+ppcls/data/dataloader/wordtree_dataset.py
+ppcls/data/dataloader/__init__.py
+ppcls/data/__init__.py
+
+5、增加对于softlabel的topk计算方法，具体为：
+ppcls/metric/metrics.py
+ppcls/metric/__init__.py
+
+6、增加对于wordtree的训练脚本，具体为：
+./train_wordtress.sh
+
+------------------------------------------------已同步至AIstudio----------------------------------------------------------
+
+
+
+------------------------------------------------8-17日更新内容------------------------------------------------------------
+修改Paddleclas在进行eval时对onehotlabel的支持形式，具体为：
+ppcls/engine/evaluation/classification.py      58行
+------------------------------------------------已同步至AIstudio----------------------------------------------------------
+
+
+
+------------------------------------------------8-20更新内容-------------------------------------------------------------
+1、将MobileNetv2和MobileNetv2_CBAM进行分离，具体为
+ppcls/configs/ImageNet/MobileNetV2_CBAM/MobileNetV2_CBAM_fourclass.yaml
+ppcls/configs/ImageNet/MobileNetV2_CBAM/MobileNetV2_CBAM_wordtree.yaml
+
+2、对原版MobileNetv2进行了恢复，具体为：
+ppcls/configs/ImageNet/MobileNetV2/MobileNetV2.yaml
+
+3、对mobilenetv2的backbone和mobilenetv2_CBAM进行了有效的分离，具体为
+ppcls/arch/backbone/model_zoo/mobilenet_v2.py
+ppcls/arch/backbone/model_zoo/mobilenetv2_cbam.py
+
+4、将MobileNetv2_CBAM并入Paddleclas下的backbone,具体为：
+ppcls/arch/backbone/__init__.py

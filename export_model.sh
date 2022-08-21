@@ -1,0 +1,1 @@
+python3 tools/export_model.py -c ppcls/configs/ImageNet/MobileNetV2/MobileNetV2.yaml -o Global.pretrained_model=mobilenetv2_cbam/best_model -o Global.save_inference_dir=./inference

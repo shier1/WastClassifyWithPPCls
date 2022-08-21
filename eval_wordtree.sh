@@ -1,0 +1,1 @@
+python3.7 -m paddle.distributed.launch --gpus="0" tools/eval.py -c ./ppcls/configs/ImageNet/MobileNetV2/MobileNeyV2_wordtree.yaml
